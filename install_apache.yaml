@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+  - name: install apache server and php
+    yum:
+      name: 
+        - httpd
+        - php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+    # when: ansible_distribution in ["Debian", "Ubuntu"]
+    # when: ansible_distribution == "CentOS" and ansible_distribution_version == "8.2"
